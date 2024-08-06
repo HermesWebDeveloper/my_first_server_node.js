@@ -1,20 +1,8 @@
 const express = require('express');
-const mysql = require('mysql2')
 const PORT = 10000;
+const { Sequelize, DataTypes } = require('sequelize');
 
 var app = express();
-
-// var con = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '1234',
-//     database: 'dc'
-// });
-
-// con.connect( (err) => {
-//     if (err) throw err;
-//     console.log('Conectado ao banco de dados!');
-// });
 
 app.get('/', (req, res) => {
     res.send("Bem vindo a nossa Homepage!");
@@ -23,3 +11,20 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log("Conectado na porta: " + PORT);
 });
+
+const sequelize = new Sequelize('banco_chuchuzinho_hermes', 'banco_chuchuzinho_hermes_user', 'jabwi67t0tG1fdkIuRCtehVwktF6knOy', {
+    host: 'dpg-cqp1g1ggph6c73ff32g0-a',
+    dialect: 'postgres'
+});
+
+// Testando a conexão com o banco de dados
+async function testConnection () {
+    try {
+        await sequelize.authenticate();
+        console.log('Conexão estabelecida com sucesso!');
+    } catch (error) {
+        console.error('Conexão com ERROR: ', error);
+    };
+};
+
+testConnection();
