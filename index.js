@@ -4,17 +4,17 @@ const PORT = 10000;
 
 var app = express();
 
-var con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'dc'
-});
+// var con = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '1234',
+//     database: 'dc'
+// });
 
-con.connect( (err) => {
-    if (err) throw err;
-    console.log('Conectado ao banco de dados!');
-});
+// con.connect( (err) => {
+//     if (err) throw err;
+//     console.log('Conectado ao banco de dados!');
+// });
 
 app.get('/', (req, res) => {
     res.send("Bem vindo a nossa Homepage!");
