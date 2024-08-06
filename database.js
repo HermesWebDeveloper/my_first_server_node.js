@@ -1,8 +1,14 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize('banco_chuchuzinho_hermes', 'banco_chuchuzinho_hermes_user', 'jabwi67t0tG1fdkIuRCtehVwktF6knOy', {
-    host: 'dpg-cqp1g1ggph6c73ff32g0-a',
-    dialect: 'postgres'
+    host: 'dpg-cqp1g1ggph6c73ff32g0-a.oregon-postgres.render.com',
+    dialect: 'postgres',
+    logging: false,
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    }
 });
 
 // Testando a conexão com o banco de dados

@@ -3,12 +3,12 @@ const User = require('../models/users');
 
 const router = express.Router();
 
-router.get('/', function(req, res) {
+router.get('/', async function(req, res) {
     try {
-        const users = User.findAll();
-        res.send(users);
+        const users = await User.findAll();
+        res.json("Usuários:" + users);
     }catch {
-        res.render("Falha")
+        res.render("Falha na busca por todos os usuários")
     }
 });
 
